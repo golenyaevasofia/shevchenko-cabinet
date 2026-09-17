@@ -17,7 +17,7 @@ const props = defineProps({
   },
 });
 
-const ICONS = '/images/shevchenko/icons';
+const ICONS = 'images/shevchenko/icons';
 
 /** type: mask = monochrome SVG (safe to tint); img = raster as-is */
 const MAP = {

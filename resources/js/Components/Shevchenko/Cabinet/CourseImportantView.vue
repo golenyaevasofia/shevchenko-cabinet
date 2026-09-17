@@ -57,7 +57,7 @@ onUnmounted(() => {
                 class="flex size-11 items-center justify-center rounded-2xl bg-shevchenko-gold"
               >
                 <img
-                  src="/images/shevchenko/icons/book-bookmark.png"
+                  src="images/shevchenko/icons/book-bookmark.png"
                   alt=""
                   width="20"
                   height="20"

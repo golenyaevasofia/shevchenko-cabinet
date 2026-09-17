@@ -62,7 +62,7 @@ function backFromGroup() {
             class="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[#B8956A] sm:size-14"
           >
             <img
-              src="/images/shevchenko/icons/book-bookmark.png"
+              src="images/shevchenko/icons/book-bookmark.png"
               alt=""
               width="26"
               height="26"

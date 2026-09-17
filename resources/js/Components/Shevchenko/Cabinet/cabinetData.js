@@ -1,13 +1,13 @@
-export const AVATAR = '/images/shevchenko/avatar.png';
-export const COURSE_COVER = '/images/shevchenko/course-cover.png';
+export const AVATAR = 'images/shevchenko/avatar.png';
+export const COURSE_COVER = 'images/shevchenko/course-cover.png';
 
 /** Новые фотосессии для визуальных блоков кабинета */
 export const PHOTOS = Object.freeze({
-  stretch: '/images/shevchenko/photo-stretch.png',
-  meditate: '/images/shevchenko/photo-meditate.png',
-  kneel: '/images/shevchenko/photo-kneel.png',
-  sky: '/images/shevchenko/photo-sky.png',
-  arms: '/images/shevchenko/photo-arms.png',
+  stretch: 'images/shevchenko/photo-stretch.png',
+  meditate: 'images/shevchenko/photo-meditate.png',
+  kneel: 'images/shevchenko/photo-kneel.png',
+  sky: 'images/shevchenko/photo-sky.png',
+  arms: 'images/shevchenko/photo-arms.png',
 });
 
 export const school = Object.freeze({
@@ -75,9 +75,9 @@ export const importantBlocks = Object.freeze([
     title: 'Оборудование для тренировок',
     text: 'Достаточно коврика и удобной одежды. Опционально: резинки, блок для йоги, мяч для МФР.',
     showcase: [
-      { id: 'mat', label: 'Коврик', image: '/images/shevchenko/equipment/mat.png' },
-      { id: 'bands', label: 'Резинки', image: '/images/shevchenko/equipment/bands.png' },
-      { id: 'block', label: 'Блок / мяч', image: '/images/shevchenko/equipment/ball.png' },
+      { id: 'mat', label: 'Коврик', image: 'images/shevchenko/equipment/mat.png' },
+      { id: 'bands', label: 'Резинки', image: 'images/shevchenko/equipment/bands.png' },
+      { id: 'block', label: 'Блок / мяч', image: 'images/shevchenko/equipment/ball.png' },
     ],
     items: [
       {
