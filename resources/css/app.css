@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-shevchenko-ink: #2c211a;
+  --color-shevchenko-brown: #4a3d32;
+  --color-shevchenko-accent: #7a5230;
+  --color-shevchenko-gold: #c8ab82;
+  --color-shevchenko-muted: #8c7d6e;
+  --color-shevchenko-soft: #b3a595;
+  --color-shevchenko-dot: #d8c9b3;
+  --color-shevchenko-cream: #fff9f3;
+  --color-shevchenko-sand: #f1e8d9;
+  --color-shevchenko-beige: #e6dccb;
+  --color-shevchenko-border: #efe7d9;
+  --color-shevchenko-border-strong: #e4dccf;
+  --color-shevchenko-border-active: #e4d6bf;
+  --color-shevchenko-track: #efe7d9;
+  --color-shevchenko-white: #ffffff;
+  --color-shevchenko-grayBtn: #f2f2f2;
+  --color-shevchenko-grayText: #abacae;
+}
+
+html, body, #app {
+  min-height: 100vh;
+}

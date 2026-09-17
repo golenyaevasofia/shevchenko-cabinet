@@ -1,0 +1,82 @@
+@import '../app.css';
+
+.shevchenko-cabinet {
+  font-family: Manrope, 'Inter', 'Open Sans', Arial, sans-serif;
+  color: #2c211a;
+  background: #f8f5f2;
+}
+
+/* Единый декоративный градиент плашек/баннеров */
+.shevchenko-cabinet .shevchenko-gradient {
+  background-image: linear-gradient(180deg, #f1e8d9 0%, #f6f1e8 100%);
+}
+
+/* Override Kinezio orange scrollbar on this page */
+html:has(.shevchenko-cabinet),
+body:has(.shevchenko-cabinet),
+.shevchenko-cabinet,
+.shevchenko-cabinet * {
+  scrollbar-width: thin !important;
+  scrollbar-color: #c8ab82 #efe7d9 !important;
+}
+
+html:has(.shevchenko-cabinet)::-webkit-scrollbar,
+body:has(.shevchenko-cabinet)::-webkit-scrollbar,
+.shevchenko-cabinet::-webkit-scrollbar,
+.shevchenko-cabinet *::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+html:has(.shevchenko-cabinet)::-webkit-scrollbar-track,
+body:has(.shevchenko-cabinet)::-webkit-scrollbar-track,
+.shevchenko-cabinet::-webkit-scrollbar-track,
+.shevchenko-cabinet *::-webkit-scrollbar-track {
+  background: #efe7d9 !important;
+  border-radius: 999px;
+}
+
+html:has(.shevchenko-cabinet)::-webkit-scrollbar-thumb,
+body:has(.shevchenko-cabinet)::-webkit-scrollbar-thumb,
+.shevchenko-cabinet::-webkit-scrollbar-thumb,
+.shevchenko-cabinet *::-webkit-scrollbar-thumb {
+  background: #c8ab82 !important;
+  border-radius: 999px;
+}
+
+html:has(.shevchenko-cabinet)::-webkit-scrollbar-thumb:hover,
+body:has(.shevchenko-cabinet)::-webkit-scrollbar-thumb:hover,
+.shevchenko-cabinet::-webkit-scrollbar-thumb:hover,
+.shevchenko-cabinet *::-webkit-scrollbar-thumb:hover {
+  background: #7a5230 !important;
+}
+
+/* Teleport-оверлеи (календарь, попапы) вне .shevchenko-cabinet */
+.shevchenko-scroll,
+.shevchenko-scroll * {
+  scrollbar-width: thin !important;
+  scrollbar-color: #c8ab82 #efe7d9 !important;
+}
+
+.shevchenko-scroll::-webkit-scrollbar,
+.shevchenko-scroll *::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+.shevchenko-scroll::-webkit-scrollbar-track,
+.shevchenko-scroll *::-webkit-scrollbar-track {
+  background: #efe7d9 !important;
+  border-radius: 999px;
+}
+
+.shevchenko-scroll::-webkit-scrollbar-thumb,
+.shevchenko-scroll *::-webkit-scrollbar-thumb {
+  background: #c8ab82 !important;
+  border-radius: 999px;
+}
+
+.shevchenko-scroll::-webkit-scrollbar-thumb:hover,
+.shevchenko-scroll *::-webkit-scrollbar-thumb:hover {
+  background: #7a5230 !important;
+}
