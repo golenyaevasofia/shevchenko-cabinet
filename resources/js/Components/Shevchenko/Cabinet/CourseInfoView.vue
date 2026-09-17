@@ -1,35 +1,11 @@
 <script setup>
-import { ref } from 'vue';
 import FybIcon from '@/Components/Shevchenko/Cabinet/FybIcon.vue';
 import FybVideoPlayer from '@/Components/Shevchenko/Cabinet/FybVideoPlayer.vue';
-import ScheduleLessonsPopup from '@/Components/Shevchenko/Cabinet/ScheduleLessonsPopup.vue';
 import {
   course,
   courseInfo,
-  courseWeeks,
-  lessonsLabel,
+  weeklySchedule,
 } from '@/Components/Shevchenko/Cabinet/cabinetData';
-
-const popupWeek = ref(null);
-const popupDay = ref(null);
-
-function openWeekPopup(week) {
-  popupWeek.value = week;
-  popupDay.value = null;
-}
-
-function openDayPopup(day) {
-  popupDay.value = day;
-}
-
-function backToWeek() {
-  popupDay.value = null;
-}
-
-function closePopup() {
-  popupWeek.value = null;
-  popupDay.value = null;
-}
 </script>
 
 <template>
@@ -112,53 +88,37 @@ function closePopup() {
         <p class="mt-1 text-sm text-shevchenko-muted">
           {{ courseInfo.scheduleCaption }}
         </p>
-        <p class="mt-1 text-xs text-shevchenko-brown">
-          {{ courseInfo.scheduleHint }}
-        </p>
       </div>
 
-      <div class="relative mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-        <button
-          v-for="(weekItem, idx) in courseWeeks"
-          :key="weekItem.id"
-          type="button"
-          class="flex min-h-[110px] flex-col justify-between rounded-2xl px-3.5 py-3.5 text-left transition-transform hover:-translate-y-0.5"
-          :class="weekItem.isFinale
-            ? 'bg-shevchenko-gold text-white'
-            : idx % 2 === 0
-              ? 'bg-[#F7F4F1] text-shevchenko-ink'
-              : 'border border-[#F8F5F2] bg-white text-shevchenko-ink'"
-          @click="openWeekPopup(weekItem)"
+      <div class="relative mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <div
+          v-for="item in weeklySchedule"
+          :key="item.day"
+          class="flex flex-col gap-1.5 rounded-xl px-3 py-3"
+          :class="item.isRest ? 'bg-[#F3F1ED]' : 'bg-[#F7F4F1]'"
         >
-          <div>
-            <p class="text-[11px] font-bold uppercase tracking-[0.08em] opacity-70">
-              {{ weekItem.isFinale ? 'Финал' : `Неделя ${idx + 1}` }}
-            </p>
-            <p class="mt-2 text-[13px] font-bold leading-snug">
-              {{ weekItem.label }}
-            </p>
-            <p class="mt-1 text-[11px] font-medium opacity-80">
-              {{ weekItem.meta }}
-            </p>
-          </div>
-          <div class="mt-3 flex items-center justify-between gap-2">
-            <span class="text-[11px] font-semibold opacity-90">
-              {{ lessonsLabel(weekItem.lessonsCount) }}
-            </span>
-            <span class="text-[11px] font-semibold opacity-80">
-              открыть ›
-            </span>
-          </div>
-        </button>
+          <span
+            class="inline-flex w-fit items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide"
+            :class="item.isRest
+              ? 'bg-[#E7E3DC] text-shevchenko-muted'
+              : 'bg-shevchenko-gold text-white'"
+          >
+            {{ item.day }}
+          </span>
+          <p
+            class="line-clamp-3 text-[12px] font-semibold leading-snug"
+            :class="item.isRest ? 'text-shevchenko-muted' : 'text-shevchenko-ink'"
+          >
+            {{ item.title }}
+          </p>
+          <p
+            v-if="item.extra"
+            class="line-clamp-2 text-[10px] leading-snug text-shevchenko-accent"
+          >
+            + {{ item.extra }}
+          </p>
+        </div>
       </div>
     </section>
-
-    <ScheduleLessonsPopup
-      :week="popupWeek"
-      :day="popupDay"
-      @close="closePopup"
-      @select-day="openDayPopup"
-      @back="backToWeek"
-    />
   </div>
 </template>
