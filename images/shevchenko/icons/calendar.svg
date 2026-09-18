@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <!-- Binding + header -->
+  <path
+    fill="currentColor"
+    d="M8.2 2.55c.47 0 .85.38.85.85V5h6V3.4a.85.85 0 1 1 1.7 0V5h.75c1.27 0 2.3 1.03 2.3 2.3v2.05H4.2V7.3c0-1.27 1.03-2.3 2.3-2.3h.75V3.4c0-.47.38-.85.85-.85Z"
+  />
+  <!-- Body frame (outer − inner) -->
+  <path
+    fill="currentColor"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M4.2 10.1h15.6v9.4c0 1.05-.85 1.9-1.9 1.9H6.1a1.9 1.9 0 0 1-1.9-1.9v-9.4Zm1.85 1.75h11.9v6.9H6.05v-6.9Z"
+  />
+  <!-- Date squares -->
+  <rect x="7.05" y="12.5" width="2" height="2" rx="0.35" fill="currentColor" />
+  <rect x="11" y="12.5" width="2" height="2" rx="0.35" fill="currentColor" />
+  <rect x="14.95" y="12.5" width="2" height="2" rx="0.35" fill="currentColor" />
+  <rect x="7.05" y="15.85" width="2" height="2" rx="0.35" fill="currentColor" />
+  <rect x="11" y="15.85" width="2" height="2" rx="0.35" fill="currentColor" />
+</svg>
