@@ -22,8 +22,11 @@ function playLesson(lesson) {
   openVideo({
     id: lesson.id,
     title: lesson.title,
-    meta: `Раздел «${props.folder.title}» · ${lesson.duration}`,
+    meta: lesson.duration
+      ? `Раздел «${props.folder.title}» · ${lesson.duration}`
+      : `Раздел «${props.folder.title}»`,
     cover: props.folder.cover,
+    url: lesson.url,
   });
 }
 </script>
@@ -104,7 +107,10 @@ function playLesson(lesson) {
             <p class="text-sm font-semibold text-shevchenko-ink">
               {{ lesson.title }}
             </p>
-            <p class="text-xs text-shevchenko-muted">
+            <p
+              v-if="lesson.duration"
+              class="text-xs text-shevchenko-muted"
+            >
               {{ lesson.duration }}
             </p>
           </div>

@@ -56,14 +56,7 @@ onUnmounted(() => {
               <span
                 class="flex size-11 items-center justify-center rounded-2xl bg-shevchenko-gold"
               >
-                <img
-                  src="images/shevchenko/icons/book-bookmark.png"
-                  alt=""
-                  width="20"
-                  height="20"
-                  class="size-5 object-contain brightness-0 invert"
-                  draggable="false"
-                />
+                <FybIcon name="book" :size="20" color="#FFFFFF" />
               </span>
               <h2 class="text-lg font-bold text-shevchenko-ink">
                 {{ block.title }}
@@ -81,7 +74,7 @@ onUnmounted(() => {
                   :href="item.url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group flex items-center justify-between gap-3 rounded-xl bg-shevchenko-cream px-4 py-3 transition-colors hover:bg-shevchenko-sand"
+                  class="group flex items-center justify-between gap-3 rounded-xl bg-shevchenko-cream px-4 py-3 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-shevchenko-sand hover:shadow-[0_6px_16px_rgba(122,82,48,0.1)]"
                 >
                   <span class="flex min-w-0 items-center gap-2">
                     <span
@@ -153,6 +146,7 @@ onUnmounted(() => {
         </div>
       </section>
 
+
       <section
         v-else-if="block.type === 'schemes'"
         class="rounded-[24px] bg-white p-5 sm:p-6"
@@ -191,7 +185,7 @@ onUnmounted(() => {
             v-for="(card, index) in block.cards"
             :key="card.id"
             type="button"
-            class="overflow-hidden rounded-2xl bg-shevchenko-cream text-left transition-shadow hover:shadow-md"
+            class="overflow-hidden rounded-2xl bg-shevchenko-cream text-left transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
             @click="openScheme(card)"
           >
             <div class="relative h-36 overflow-hidden">
@@ -244,7 +238,42 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="mx-auto w-full max-w-md">
+          <a
+            v-if="block.url"
+            :href="block.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative block aspect-video max-h-[220px] w-full overflow-hidden rounded-2xl bg-shevchenko-ink"
+          >
+            <img
+              :src="block.videoPoster"
+              alt=""
+              class="absolute inset-0 size-full object-cover object-[center_22%]"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-shevchenko-ink/80 via-shevchenko-ink/20 to-transparent"
+            />
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white">
+              <span
+                class="flex size-9 items-center justify-center rounded-full bg-shevchenko-gold shadow-lg transition-transform group-hover:scale-105"
+              >
+                <FybIcon name="play" :size="14" color="#FFFFFF" />
+              </span>
+              <span class="max-w-[90%] text-center">
+                <span class="block text-sm font-semibold sm:text-base">
+                  Мотивационное видео
+                </span>
+                <span
+                  v-if="block.videoCaption"
+                  class="mt-1 block text-xs text-white/80 sm:text-sm"
+                >
+                  {{ block.videoCaption }}
+                </span>
+              </span>
+            </div>
+          </a>
           <FybVideoPlayer
+            v-else
             video-id="motivation"
             :poster="block.videoPoster"
             title="Мотивационное видео"
@@ -258,42 +287,61 @@ onUnmounted(() => {
     <CourseTvView embedded />
 
     <Teleport to="body">
-      <div
-        v-if="activeScheme"
-        class="shevchenko-scroll fixed inset-0 z-[70] flex items-center justify-center bg-shevchenko-ink/50 p-4 backdrop-blur-[2px]"
-        @click.self="closeScheme"
+      <Transition
+        enter-active-class="transition-opacity duration-200 ease-out"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="transition-opacity duration-150 ease-in"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
       >
         <div
-          class="w-full max-w-lg overflow-hidden rounded-[24px] bg-white shadow-2xl"
+          v-if="activeScheme"
+          class="shevchenko-scroll fixed inset-0 z-[70] flex items-center justify-center bg-shevchenko-ink/50 p-4 backdrop-blur-[2px]"
+          @click.self="closeScheme"
         >
-          <div class="flex items-start justify-between gap-3 px-5 py-4">
-            <div>
-              <p class="text-[11px] font-bold uppercase tracking-[0.08em] text-shevchenko-accent">
-                Схема
-              </p>
-              <h3 class="mt-1 text-lg font-extrabold text-shevchenko-ink">
-                {{ activeScheme.popupTitle }}
-              </h3>
+          <Transition
+            appear
+            enter-active-class="transition-all duration-250 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            enter-from-class="opacity-0 scale-95 translate-y-2"
+            enter-to-class="opacity-100 scale-100 translate-y-0"
+            leave-active-class="transition-all duration-150 ease-in"
+            leave-from-class="opacity-100 scale-100"
+            leave-to-class="opacity-0 scale-95"
+          >
+            <div
+              class="w-full max-w-lg overflow-hidden rounded-[24px] bg-white shadow-2xl"
+            >
+              <div class="flex items-start justify-between gap-3 px-5 py-4">
+                <div>
+                  <p class="text-[11px] font-bold uppercase tracking-[0.08em] text-shevchenko-accent">
+                    Схема
+                  </p>
+                  <h3 class="mt-1 text-lg font-extrabold text-shevchenko-ink">
+                    {{ activeScheme.popupTitle }}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  class="flex size-9 items-center justify-center rounded-xl bg-shevchenko-cream text-shevchenko-brown"
+                  aria-label="Закрыть"
+                  @click="closeScheme"
+                >
+                  ✕
+                </button>
+              </div>
+              <div class="space-y-3 px-5 py-5 text-sm leading-relaxed text-shevchenko-brown">
+                <p
+                  v-for="(paragraph, i) in activeScheme.popupText"
+                  :key="i"
+                >
+                  {{ paragraph }}
+                </p>
+              </div>
             </div>
-            <button
-              type="button"
-              class="flex size-9 items-center justify-center rounded-xl bg-shevchenko-cream text-shevchenko-brown"
-              aria-label="Закрыть"
-              @click="closeScheme"
-            >
-              ✕
-            </button>
-          </div>
-          <div class="space-y-3 px-5 py-5 text-sm leading-relaxed text-shevchenko-brown">
-            <p
-              v-for="(paragraph, i) in activeScheme.popupText"
-              :key="i"
-            >
-              {{ paragraph }}
-            </p>
-          </div>
+          </Transition>
         </div>
-      </div>
+      </Transition>
     </Teleport>
   </div>
 </template>

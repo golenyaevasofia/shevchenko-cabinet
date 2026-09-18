@@ -23,63 +23,99 @@ onUnmounted(() => {
 
 <template>
   <Teleport to="body">
-    <div
-      v-if="activeVideo"
-      class="shevchenko-scroll fixed inset-0 z-[70] flex items-center justify-center bg-shevchenko-ink/55 p-4 backdrop-blur-[2px]"
-      @click.self="closeVideo"
+    <Transition
+      enter-active-class="transition-opacity duration-200 ease-out"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition-opacity duration-150 ease-in"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
     >
       <div
-        class="shevchenko-scroll w-full max-w-[720px] overflow-hidden rounded-[24px] bg-white shadow-2xl"
+        v-if="activeVideo"
+        class="shevchenko-scroll fixed inset-0 z-[70] flex items-center justify-center bg-shevchenko-ink/55 p-4 backdrop-blur-[2px]"
+        @click.self="closeVideo"
       >
-        <div class="flex items-start justify-between gap-3 px-4 py-3 sm:px-5">
-          <div class="min-w-0">
-            <p class="truncate text-base font-bold text-shevchenko-ink">
-              {{ activeVideo.title }}
-            </p>
-            <p
-              v-if="activeVideo.meta"
-              class="mt-0.5 truncate text-xs text-shevchenko-muted"
-            >
-              {{ activeVideo.meta }}
-            </p>
-          </div>
-          <div class="flex shrink-0 items-center gap-1.5">
-            <FavoriteHeart
-              :video-id="activeVideo.id"
-              :size="16"
-              tone="light"
-            />
-            <button
-              type="button"
-              class="flex size-9 items-center justify-center rounded-xl bg-shevchenko-cream text-shevchenko-brown"
-              aria-label="Закрыть"
-              @click="closeVideo"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-
-        <div class="relative aspect-video bg-shevchenko-ink">
-          <img
-            :src="activeVideo.cover"
-            alt=""
-            class="absolute inset-0 size-full object-cover object-[center_20%]"
-          />
+        <Transition
+          appear
+          enter-active-class="transition-all duration-250 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          enter-from-class="opacity-0 scale-95 translate-y-2"
+          enter-to-class="opacity-100 scale-100 translate-y-0"
+          leave-active-class="transition-all duration-150 ease-in"
+          leave-from-class="opacity-100 scale-100"
+          leave-to-class="opacity-0 scale-95"
+        >
           <div
-            class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-shevchenko-ink/35"
+            class="shevchenko-scroll w-full max-w-[720px] overflow-hidden rounded-[24px] bg-white shadow-2xl"
           >
-            <span
-              class="flex size-12 items-center justify-center rounded-full bg-shevchenko-gold shadow-lg"
-            >
-              <FybIcon name="play" :size="18" color="#FFFFFF" />
-            </span>
-            <p class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
-              Прототип плеера · видео подключится позже
-            </p>
+            <div class="flex items-start justify-between gap-3 px-4 py-3 sm:px-5">
+              <div class="min-w-0">
+                <p class="truncate text-base font-bold text-shevchenko-ink">
+                  {{ activeVideo.title }}
+                </p>
+                <p
+                  v-if="activeVideo.meta"
+                  class="mt-0.5 truncate text-xs text-shevchenko-muted"
+                >
+                  {{ activeVideo.meta }}
+                </p>
+              </div>
+              <div class="flex shrink-0 items-center gap-1.5">
+                <FavoriteHeart
+                  :video-id="activeVideo.id"
+                  :size="16"
+                  tone="light"
+                />
+                <button
+                  type="button"
+                  class="flex size-9 items-center justify-center rounded-xl bg-shevchenko-cream text-shevchenko-brown"
+                  aria-label="Закрыть"
+                  @click="closeVideo"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            <div class="relative aspect-video bg-shevchenko-ink">
+              <img
+                :src="activeVideo.cover"
+                alt=""
+                class="absolute inset-0 size-full object-cover object-[center_20%]"
+              />
+              <a
+                v-if="activeVideo.url"
+                :href="activeVideo.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group absolute inset-0 flex flex-col items-center justify-center gap-3 bg-shevchenko-ink/35 transition-colors hover:bg-shevchenko-ink/45"
+              >
+                <span
+                  class="flex size-12 items-center justify-center rounded-full bg-shevchenko-gold shadow-lg transition-transform group-hover:scale-105"
+                >
+                  <FybIcon name="play" :size="18" color="#FFFFFF" />
+                </span>
+                <p class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+                  Смотреть видео →
+                </p>
+              </a>
+              <div
+                v-else
+                class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-shevchenko-ink/35"
+              >
+                <span
+                  class="flex size-12 items-center justify-center rounded-full bg-shevchenko-gold shadow-lg"
+                >
+                  <FybIcon name="play" :size="18" color="#FFFFFF" />
+                </span>
+                <p class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+                  Прототип плеера · видео подключится позже
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        </Transition>
       </div>
-    </div>
+    </Transition>
   </Teleport>
 </template>

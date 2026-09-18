@@ -24,7 +24,8 @@ export const user = Object.freeze({
 });
 
 export const course = Object.freeze({
-  badge: 'ФЛАГМАНСКИЙ КУРС',
+  badge: 'ЗАКРЫТЫЙ ОНЛАЙН КЛУБ',
+  secondaryBadge: 'Силовые + осанка',
   brand: 'FEEL YOUR BODY',
   author: 'BY ЛЕРА ШЕВЧЕНКО',
   title: 'Feel Your Body',
@@ -53,12 +54,14 @@ export const purchasedCourses = Object.freeze([
 
 /** Главный экран курса — Информация о курсе */
 export const courseInfo = Object.freeze({
-  introTitle: 'Добро пожаловать в Feel Your Body',
+  introTitle: 'О клубе Feel Your Body',
   intro: [
-    'Это флагманский курс Леры Шевченко о том, как заново почувствовать своё тело, выстроить привычку тренироваться и двигаться осознанно.',
-    'Сразу после покупки вам доступны вводное видео, расписание, важные материалы и первые тренировки — ничего ждать не нужно.',
+    'Добро пожаловать в закрытый тренировочный клуб Валерии Шевченко. Клуб называется Feel Your Body! Это место, где вы научитесь на 100% ощущать своё тело и правильно с ним работать.',
+    'Начало потока — 21.09. Но до начала потока заходите в раздел «Допматериалы» и смотрите раздел для новичков и тренировки до начала потока.',
+    'Также все тренировки дублируются в телеграм-канал — если вам удобно смотреть там, переходите в канал.',
   ],
   videoTitle: 'Видео-вступление',
+  videoReleaseNote: 'Тренировка выходит до 9:00 по МСК',
   videoPoster: PHOTOS.arms,
   videoCaption: 'Лера рассказывает, как устроен курс и с чего начать',
   telegramCta: 'Перейти в Telegram-канал',
@@ -87,27 +90,42 @@ export const importantBlocks = Object.freeze([
     id: 'equipment',
     type: 'equipment',
     title: 'Оборудование для тренировок',
-    text: 'Достаточно коврика и удобной одежды. Опционально: резинки, блок для йоги, мяч для МФР.',
+    text: 'Начинать можно без оборудования, но я бы всё-таки советовала купить гантели 2 кг и мяч для пилатеса 25–30 см.',
     showcase: [
       { id: 'mat', label: 'Коврик', image: 'images/shevchenko/equipment/mat.png' },
       { id: 'bands', label: 'Резинки', image: 'images/shevchenko/equipment/bands.png' },
-      { id: 'block', label: 'Блок / мяч', image: 'images/shevchenko/equipment/ball.png' },
+      { id: 'block', label: 'Мяч', image: 'images/shevchenko/equipment/ball.png' },
     ],
     items: [
       {
-        label: 'Коврик',
-        note: 'обязательно',
-        url: 'https://www.wildberries.ru/catalog/0/search.aspx?search=%D0%BA%D0%BE%D0%B2%D1%80%D0%B8%D0%BA+%D0%B4%D0%BB%D1%8F+%D0%B9%D0%BE%D0%B3%D0%B8',
+        label: 'Мягкий коврик',
+        note: 'рекомендуем',
+        url: 'https://ozon.ru/t/dwbSnHz',
       },
       {
-        label: 'Резинки',
+        label: 'Гантели 2 кг',
+        note: 'рекомендуем',
+        url: 'https://ozon.ru/t/wETJKyu',
+      },
+      {
+        label: 'Мяч для пилатеса',
+        note: 'рекомендуем',
+        url: 'https://ozon.ru/t/cFMO7mC',
+      },
+      {
+        label: 'Разборные гантели',
+        note: 'на будущее',
+        url: 'https://ozon.ru/t/J53PxEt',
+      },
+      {
+        label: 'Мячики для МФР',
         note: 'по желанию',
-        url: 'https://www.wildberries.ru/catalog/0/search.aspx?search=%D1%84%D0%B8%D1%82%D0%BD%D0%B5%D1%81+%D1%80%D0%B5%D0%B7%D0%B8%D0%BD%D0%BA%D0%B8',
+        url: 'https://ozon.ru/t/1fmpdUY',
       },
       {
-        label: 'Блок / мяч',
-        note: 'для комфорта',
-        url: 'https://www.wildberries.ru/catalog/0/search.aspx?search=%D0%B1%D0%BB%D0%BE%D0%BA+%D0%B4%D0%BB%D1%8F+%D0%B9%D0%BE%D0%B3%D0%B8+%D0%BC%D1%8F%D1%87+%D0%9C%D0%A4%D0%A0',
+        label: 'Фитнес-резинки',
+        note: 'по желанию',
+        url: 'https://ozon.ru/t/J53PAmI',
       },
     ],
   },
@@ -159,9 +177,10 @@ export const importantBlocks = Object.freeze([
     id: 'motivation',
     type: 'video',
     title: 'Мотивационное видео',
-    text: 'Когда сложно начать — короткое видео от Леры, чтобы вернуться в процесс.',
+    text: 'Если никак не найти время на тренировку и нет желания заниматься — смотрите это видео.',
     videoPoster: PHOTOS.sky,
     videoCaption: '«Ты уже на пути»',
+    url: 'https://kinescope.io/9e9d3e89-8cf7-42ec-932b-1814e2a28705',
   },
 ]);
 
@@ -295,8 +314,24 @@ export const extrasFolders = Object.freeze([
     description: 'База для тех, кто только заходит в клуб: как заниматься, как дышать, чего избегать.',
     benefit: 'Понятный старт и меньше тревоги в первые тренировки.',
     lessons: [
-      { id: 'beg-1', title: 'С чего начать', duration: '10 мин' },
-      { id: 'beg-2', title: 'Частые ошибки', duration: '12 мин' },
+      {
+        id: 'beg-intro',
+        title: 'Вводное видео',
+        duration: '',
+        url: 'https://kinescope.io/d2d28a91-c995-4473-a374-42fd7a454658',
+      },
+      {
+        id: 'beg-mistakes',
+        title: 'Основные ошибки в упражнениях',
+        duration: '',
+        url: 'https://kinescope.io/925tzaVoeenEZnWSsPqaDX',
+      },
+      {
+        id: 'beg-equipment',
+        title: 'Про оборудование для тренировок',
+        duration: '',
+        url: 'https://kinescope.io/ofVAEdpR3n3JB5kzZGQH3V',
+      },
     ],
   }),
   makeExtrasFolder({

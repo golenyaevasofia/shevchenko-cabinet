@@ -16,7 +16,7 @@ const videoId = computed(() => `day-${props.day.id}`);
 
 <template>
   <article
-    class="flex min-w-0 flex-col overflow-hidden rounded-xl bg-white transition-colors"
+    class="flex min-w-0 flex-col overflow-hidden rounded-xl bg-white transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(122,82,48,0.12)]"
   >
     <div class="relative h-[160px] w-full overflow-hidden bg-shevchenko-beige sm:h-[140px]">
       <img

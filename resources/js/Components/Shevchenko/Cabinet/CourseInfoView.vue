@@ -17,10 +17,10 @@ import {
         {{ course.badge }}
       </span>
       <span
-        v-if="course.availableAfterPurchase"
+        v-if="course.secondaryBadge"
         class="rounded-full bg-shevchenko-ink px-3 py-1 text-[11px] font-semibold text-white"
       >
-        Доступно сразу после покупки
+        {{ course.secondaryBadge }}
       </span>
     </div>
 
@@ -30,9 +30,17 @@ import {
       <div
         class="flex min-h-[200px] w-full flex-col gap-2 overflow-hidden rounded-[22px] bg-white p-2.5 lg:h-full lg:min-h-0"
       >
-        <p class="shrink-0 px-1 text-[11px] font-bold uppercase tracking-[0.06em] text-shevchenko-accent">
-          {{ courseInfo.videoTitle }}
-        </p>
+        <div class="shrink-0 px-1">
+          <p class="text-[11px] font-bold uppercase tracking-[0.06em] text-shevchenko-accent">
+            {{ courseInfo.videoTitle }}
+          </p>
+          <p
+            v-if="courseInfo.videoReleaseNote"
+            class="mt-0.5 text-[11px] font-medium text-shevchenko-muted"
+          >
+            {{ courseInfo.videoReleaseNote }}
+          </p>
+        </div>
         <div class="relative min-h-[140px] flex-1 lg:min-h-0">
           <FybVideoPlayer
             video-id="intro"
@@ -94,7 +102,7 @@ import {
         <div
           v-for="item in weeklySchedule"
           :key="item.day"
-          class="flex flex-col gap-1.5 rounded-xl px-3 py-3"
+          class="flex flex-col gap-1.5 rounded-xl px-3 py-3 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(122,82,48,0.12)]"
           :class="item.isRest ? 'bg-[#F3F1ED]' : 'bg-[#F7F4F1]'"
         >
           <span

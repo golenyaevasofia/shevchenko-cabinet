@@ -61,14 +61,7 @@ function backFromGroup() {
           <span
             class="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[#B8956A] sm:size-14"
           >
-            <img
-              src="images/shevchenko/icons/book-bookmark.png"
-              alt=""
-              width="26"
-              height="26"
-              class="size-5 object-contain brightness-0 invert sm:size-[26px]"
-              draggable="false"
-            />
+            <FybIcon name="book" :size="24" color="#FFFFFF" />
           </span>
           <div class="min-w-0">
             <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-shevchenko-ink/70">

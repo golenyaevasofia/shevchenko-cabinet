@@ -160,6 +160,7 @@ export function provideCabinetUi() {
       title: payload.title,
       meta: payload.meta || '',
       cover: payload.cover,
+      url: payload.url,
     };
     activeFile.value = null;
   }

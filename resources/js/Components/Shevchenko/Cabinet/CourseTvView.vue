@@ -54,11 +54,11 @@ defineProps({
         </li>
         <li class="flex gap-3">
           <span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-shevchenko-gold text-xs font-bold text-white">3</span>
-          <span>В поиске вбейте «Feel Your Body».</span>
+          <span>В поиске вбейте «Feel Your Body PLATFORMAX.PRO».</span>
         </li>
         <li class="flex gap-3">
           <span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-shevchenko-gold text-xs font-bold text-white">4</span>
-          <span>Откройте сайт Feel Your Body.</span>
+          <span>Откройте сайт Feel Your Body PLATFORMAX.PRO.</span>
         </li>
         <li class="flex gap-3">
           <span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-shevchenko-gold text-xs font-bold text-white">5</span>

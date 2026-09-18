@@ -97,12 +97,25 @@ function openNextWeek() {
   <div class="flex flex-col gap-4">
     <CabinetCourseHeader @navigate="emit('navigate', $event)" />
 
-    <CourseInfoView v-if="activeView === 'info'" />
-    <CourseImportantView v-else-if="activeView === 'important'" />
-    <CourseExtrasView v-else-if="activeView === 'extras'" />
-    <CourseFavoritesView v-else-if="activeView === 'favourites'" />
+    <Transition
+      mode="out-in"
+      enter-active-class="transition-all duration-200 ease-out"
+      enter-from-class="opacity-0 translate-y-1.5"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition-all duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-1.5"
+    >
+    <CourseInfoView v-if="activeView === 'info'" key="info" />
+    <CourseImportantView v-else-if="activeView === 'important'" key="important" />
+    <CourseExtrasView v-else-if="activeView === 'extras'" key="extras" />
+    <CourseFavoritesView v-else-if="activeView === 'favourites'" key="favourites" />
 
-    <template v-else-if="activeView === 'materials'">
+    <div
+      v-else-if="activeView === 'materials'"
+      key="materials"
+      class="flex flex-col gap-4"
+    >
       <!-- Weeks -->
       <div
         class="flex flex-col gap-3 rounded-xl bg-white px-3 py-3 sm:px-4"
@@ -234,14 +247,24 @@ function openNextWeek() {
           Открыть раздел ›
         </button>
       </div>
-    </template>
+    </div>
+    </Transition>
 
     <Teleport to="body">
-      <DayHeroScreen
-        v-if="selectedDay"
-        :day="selectedDay"
-        @close="closeDay"
-      />
+      <Transition
+        enter-active-class="transition-opacity duration-200 ease-out"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="transition-opacity duration-150 ease-in"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <DayHeroScreen
+          v-if="selectedDay"
+          :day="selectedDay"
+          @close="closeDay"
+        />
+      </Transition>
     </Teleport>
   </div>
 </template>
